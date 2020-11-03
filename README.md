@@ -55,9 +55,9 @@ Estatus da quantidade de contas. Não sofrerá alteração
 Valor do pagamento anterior (dólar NT). X18 = valor pago em setembro de 2005; X19 = valor pago em agosto de 2005; . . .; X23 = valor pago em abril de 2005. Não sofrerá alteração
 
 
+==============
 
-
-# Dividindo a base em teste e treino
+# DIVIDINDO A BASE EM TREINO E TESTE
 idx = sample(dim(loan.new)[1] , 0.75*dim(loan.new)[1] , replace = F)
 trainset = loan.new[idx , ]
 testset = loan.new[-idx , ]
