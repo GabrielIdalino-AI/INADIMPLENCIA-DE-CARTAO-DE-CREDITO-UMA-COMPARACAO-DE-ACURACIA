@@ -112,5 +112,11 @@ Os dados foram divididos nas seguintes proporções:
 | <img src="https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/XGBoost%20ROC%20Curve.%20trainset.png" width="250"> | <img src="https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/XGBoost%20ROC%20Curve.%20Testset.png" width="250">|
 
 
+# Os códgios das etapas estão presentes aqui:
+1. Pacotes necessários: https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/1%20-%20Pacotes%20necess%C3%A1rios
+2. Preparação dos dados: https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/2%20-%20Transformando%20os%20dados
+3. Aplicando a Regressão Logística:https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/3%20-%20Aplicando%20a%20Regress%C3%A3o%20log%C3%ADstica
+4. Aplicando o XGBoost: https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/4%20-%20Aplicando%20o%20XGBoost
+
 
 
