@@ -44,9 +44,21 @@ loan.new$X4 = ifelse(loan.new$X4 == 2,1,0)
 
 # X5 idade. Não precisa de alteração
 
-# X6 - X11 são históricos de pagamentos de Abril até Setembro.Os valores são referente a quando foi pago a divida e o tempo,em meses, de atraso dela, mas não afirmaque são as dívidas com cc, são apenas contas em atraso: histórico de "bom pagador". Se -1 =pagamento adiantado, se 0 >, pagamento atrasado. A variável não sofrerá alteração.
+# X6 - X11
+São históricos de pagamentos de Abril até Setembro.Os valores são referente a quando foi pago a divida e o tempo,em meses, de atraso dela, mas não afirmaque são as dívidas com cc, são apenas contas em atraso: histórico de "bom pagador". Se -1 =pagamento adiantado, se 0 >, pagamento atrasado. A variável não sofrerá alteração.
 
 
-# X12-X17 estatus da quantidade de contas. Não sofrerá alteração
+# X12-X17
+Estatus da quantidade de contas. Não sofrerá alteração
 
-# X18-X23 Valor do pagamento anterior (dólar NT). X18 = valor pago em setembro de 2005; X19 = valor pago em agosto de 2005; . . .; X23 = valor pago em abril de 2005. Não sofrerá alteração
+# X18-X23 
+Valor do pagamento anterior (dólar NT). X18 = valor pago em setembro de 2005; X19 = valor pago em agosto de 2005; . . .; X23 = valor pago em abril de 2005. Não sofrerá alteração
+
+
+
+
+# Dividindo a base em teste e treino
+idx = sample(dim(loan.new)[1] , 0.75*dim(loan.new)[1] , replace = F)
+trainset = loan.new[idx , ]
+testset = loan.new[-idx , ]
+
