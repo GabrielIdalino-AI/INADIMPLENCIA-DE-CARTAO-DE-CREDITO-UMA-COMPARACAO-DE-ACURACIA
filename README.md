@@ -22,7 +22,7 @@ default_of_credit_card_clients <- read_excel("seu repositorio com a base de dado
 ============
 
 # NESTA ETAPA ACONTECERÁ AS TRANSFORMAÇÕES DAS VARIÁVEIS
-
+============
 # retirando a coluna dos dados sobre ID 
 loan.new = default_of_credit_card_clients[,-1]
 
