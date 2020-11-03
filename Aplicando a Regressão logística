@@ -1,0 +1,51 @@
+
+# Create our GLM object 
+glm.model = glm(trainset$Y ~., trainset , family = binomial(link = 'logit'))
+summary(glm.model)
+
+# Create our prediction probabilities
+p <- predict(glm.model, type = "response", newdata = trainset)
+hist(p)
+
+tab <- table(p, trainset$Y)
+sum(diag(tab))/sum(tab)
+
+# Setting a cutoff
+pred1 <- ifelse(p>0.4,1,0)
+tab <- table(Predicted = pred1, Actual = trainset$Y)
+tab
+
+
+confusionMatrix(tab)# RESULTADO A SER ANALISADO PREDIÇÃO SENSIBILIDADE E ESPECIFICIDADE
+
+
+
+# ROC Curve steps
+
+
+## Model Perfomance Evaluation
+library(ROCR)
+
+#Creating ROC curve objects
+pred <- predict(glm.model, data = trainset)
+pred <- prediction(pred, trainset[,24])
+
+
+
+
+
+# Grafic
+roc <- performance(pred,"tpr","fpr")
+plot(roc, colorize = T, ylab ="Sensivity",xlab = "1-Specificity", main ="ROC Curve")
+abline(a=0,b=1)
+
+
+# Area under hte curve
+auc <- performance(pred,"auc")
+auc <- unlist(slot(auc, "y.values"))
+legend(0.45,0.395,auc, title = "AUC")
+
+
+
+
+
