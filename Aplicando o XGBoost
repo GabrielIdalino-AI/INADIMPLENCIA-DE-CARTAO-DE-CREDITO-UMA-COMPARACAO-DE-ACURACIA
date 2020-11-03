@@ -1,0 +1,117 @@
+mydata = loan.new
+
+# Set the seed to create reproducible train and test sets
+set.seed(300)
+
+
+# Create a stratified random sample to create train and test sets
+# Reference the outcome variable
+trainIndex   <- createDataPartition(loan.new$Y, p=0.75, list=FALSE, times=1)
+train        <- mydata[ trainIndex, ]
+test         <- mydata[-trainIndex, ]
+
+
+
+
+# Create separate vectors of our outcome variable for both our train and test sets
+# We'll use these to train and test our model later
+train.label  <- train$Y
+test.label   <- test$Y
+
+
+# Load the Matrix package
+library(Matrix)
+
+# Create sparse matrixes and perform One-Hot Encoding to create dummy variables
+dtrain  <- sparse.model.matrix(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + 
+                                 X7 + X8 + X9 + X10 + X11 + X12 + X13 + X14 + X15 +
+                                 X16 + X17 + X18 + X19 + X20 + X21 + X22 + X23,-24, data=train)
+dtest   <- sparse.model.matrix(Y ~ X1 + X2 + X3 + X4 + X5 + X6 + 
+                                 X7 + X8 + X9 + X10 + X11 + X12 + X13 + X14 + X15 +
+                                 X16 + X17 + X18 + X19 + X20 + X21 + X22 + X23,-24, data=test)
+
+
+
+# View the number of rows and features of each set
+dim(dtrain)
+dim(dtest)
+
+
+
+# Load the XGBoost package
+library(xgboost)
+
+# Set our hyperparameters
+param <- list(objective   = "binary:logistic",
+              eval_metric = "error",
+              max_depth   = 3,
+              eta         = 0.0001,
+              gammma      = 1,
+              colsample_bytree = 0.3
+              )
+
+
+set.seed(1234)
+
+
+
+# Pass in our hyperparameteres and train the model 
+system.time(xgb <- xgboost(params  = param,
+                           data    = dtrain,
+                           label   = train.label, 
+                           nrounds = 1000,
+                           print_every_n = 100,
+                           verbose = 1))
+
+
+
+# Create our prediction probabilities
+pred <- predict(xgb, dtrain)
+
+# Set our cutoff threshold
+pred.resp <- ifelse(pred >= 0.5, 1, 0)
+
+
+# Create the confusion matrix
+tab <- table(Predicted = pred.resp, Actual = train$Y)
+
+
+
+# RESULTADO A SER ANALISADO PREDIÇÃO SENSIBILIDADE E ESPECIFICIDADE
+confusionMatrix(tab)
+
+
+
+# Get the trained model
+model <- xgb.dump(xgb, with_stats=TRUE)
+
+# Get the feature real names
+names <- dimnames(dtrain)[[2]]
+
+# Compute feature importance matrix
+importance_matrix <- xgb.importance(names, model=xgb)[0:20] # View top 20 most important features
+
+# Plot
+xgb.plot.importance(importance_matrix)
+
+
+
+
+
+
+library(ROCR)
+
+# Use ROCR package to plot ROC Curve
+xgb.pred <- prediction(pred, train.label)
+xgb.perf <- performance(xgb.pred, "tpr", "fpr")
+
+# Grafico
+
+plot(xgb.perf, colorize = T, ylab ="Sensivity",xlab = "1-Specificity", main ="ROC Curve")
+abline(a=0,b=1)
+
+
+#Area under hte curve
+auc <- performance(xgb.pred,"auc")
+auc <- unlist(slot(auc, "y.values"))
+legend(0.45,0.395,auc, title = "AUC")
