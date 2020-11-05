@@ -29,7 +29,7 @@ O dicionário e a base de dados estão disponíveis em: https://archive.ics.uci.
 1. Transformação das variáveis
 2. Dividir em dados de treino e teste
 3. Aplicação dos modelos 
-4. Análise das Matrizes de Confusão
+4. Matriz de Confusão
 5. Curva ROC
 
 #### Transformação das variáveis
