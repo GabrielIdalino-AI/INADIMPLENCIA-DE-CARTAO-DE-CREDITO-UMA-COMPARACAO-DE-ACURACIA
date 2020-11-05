@@ -61,7 +61,7 @@ Os modelos tiveram como resultados das probabilidades as seguintes distribuiçõ
 
  #### Análise da matriz de confusão
 - Regressão logística
-> O ponto de corte de retornou o maior valor da acurácia se encontra em 0.4
+> O ponto de corte que retornou o maior valor da acurácia se encontra em 0.4
 
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
@@ -74,7 +74,7 @@ Os modelos tiveram como resultados das probabilidades as seguintes distribuiçõ
 
 
 - XGBoost
-> O ponto de corte de retornou o maior valor da acurácia se encontra em 0.5
+> O ponto de corte que retornou o maior valor da acurácia se encontra em 0.5
 
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
