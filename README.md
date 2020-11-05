@@ -88,7 +88,7 @@ Os modelos tiveram como resultados das probabilidades as seguintes distribuiçõ
 
 
 #### Curva ROC
-Os dados foram divididos nas seguintes proporções:
+Analisando o desempenho dos modelos para a área abaixo da curva (AUC):
 > Regressão logística
 
 
