@@ -1,6 +1,6 @@
 # PREVISÃO DE INADINPLÊNCIA: UMA COMPARAÇÃO ENTRE REGRESSÃO LOGÍSTICA E O ALGORITMO XGBOOST
-O objetivo deste trabalho é comparar o desempenho da acurácia entre a Regressão logística e o algoritmo XGBoost por meio de métricas de validação para modelos de classificação aplicados a previsão de inadimplência de clientes que utilizam cartão de crédito de um determinado banco não especificado.
-O dicionário e a base de dados está disponível em: https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
+O objetivo deste trabalho é comparar o desempenho da acurácia entre a Regressão logística e o algoritmo XGBoost por meio de métricas de validação para modelos de classificação aplicados a previsão de inadimplência. As informações são de clientes que utilizam cartão de crédito de um determinado banco não especificado.
+O dicionário e a base de dados estão disponíveis em: https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
 
 
 ## Descrição das Variáveis
@@ -12,6 +12,7 @@ O dicionário e a base de dados está disponível em: https://archive.ics.uci.ed
 - X6 - X11: Histórico de pagamentos anteriores. Rastreamos os registros de pagamentos mensais anteriores (de abril a setembro de 2005) da seguinte maneira: X6 = o status de reembolso em setembro de 2005; X7 = situação de amortização em agosto de 2005; . . .; X11 = estado de reembolso em abril de 2005. A escala de medição para o estado de reembolso é: -1 = pagamento em dia; 1 = atraso no pagamento por um mês; 2 = atraso no pagamento por dois meses; . . .; 8 = atraso no pagamento por oito meses; 9 = atraso no pagamento de nove meses ou mais.
 - X12-X17: Valor da fatura (dólar NT). X12 = valor da fatura em setembro de 2005; X13 = valor da fatura em agosto de 2005; . . .; X17 = valor da fatura em abril de 2005.
 - X18-X23: Valor do pagamento anterior (dólar NT). X18 = valor pago em setembro de 2005; X19 = valor pago em agosto de 2005; . . .; X23 = valor pago em abril de 2005.
+- Y: inadimplência como variável de resposta 1 = inadimplente 0 = adimplente 
 
 
 
@@ -32,7 +33,8 @@ O dicionário e a base de dados está disponível em: https://archive.ics.uci.ed
 5. Curva ROC
 
 #### Transformação das variáveis
-As características dos individuos escolhidos para esta análise foram selecionadas por ocuparem em maiores proporções na base de dados, contudo, caso haja interesse pode-se alterar as propriedades. A analise correspondente aos resultados aqui compartilhados se resumem a individuos com determinados aspectos:
+As características dos individuos escolhidos para esta análise foram selecionadas por ocuparem em maiores proporções relativamente a quantidade total na base de dados, contudo, caso haja interesse, as propriedades podem ser alteradas. A análise correspondente aos resultados aqui compartilhados se resumem a individuos com determinados aspectos:
+
 - Gênero: Feminino
 - Escolaridade: superior
 - Estado civil: solteiro(a)
@@ -43,7 +45,7 @@ Os dados foram divididos nas seguintes proporções:
 - Dados de Teste: 25%
 
 #### Aplicação dos modelos
-Os modelos tiveram com resultados das probabilidades as seguintes distribuições
+Os modelos tiveram como resultados das probabilidades as seguintes distribuições
 > Regressão logistica
 
 | Dados Teste | Dados Treino |
@@ -58,8 +60,8 @@ Os modelos tiveram com resultados das probabilidades as seguintes distribuiçõe
 
 
  #### Análise da matriz de confusão
-> Regressão logística
-
+- Regressão logística
+> O ponto de corte de retornou o maior valor da acurácia se encontra em 0.4
 
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
@@ -67,12 +69,12 @@ Os modelos tiveram com resultados das probabilidades as seguintes distribuiçõe
 | VPN |    0.6463   |   0.6472 |
 | VPP | 0.8428 |    0.8417 |
 | Especificidade | 0.3739 |    0.3847 |
-| Sencibilidade | 0.9412 |    0.9398 |
+| Sensibilidade | 0.9412 |    0.9398 |
 
 
 
-> XGBoost
-
+- XGBoost
+> O ponto de corte de retornou o maior valor da acurácia se encontra em 0.5
 
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
@@ -80,7 +82,7 @@ Os modelos tiveram com resultados das probabilidades as seguintes distribuiçõe
 | VPN |    0.7036   |   0.7239 |
 | VPP | 0.8098 |    0.8198 |
 | Especificidade | 0.1947 |    0.2401 |
-| Sencibilidade | 0.9766 |    0.9742 |
+| Sensibilidade | 0.9766 |    0.9742 |
 
 
 
@@ -111,8 +113,10 @@ Os dados foram divididos nas seguintes proporções:
 | ------------ | ------------- |
 | <img src="https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/XGBoost%20ROC%20Curve.%20trainset.png" width="250"> | <img src="https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/XGBoost%20ROC%20Curve.%20Testset.png" width="250">|
 
+# Conclusão
+Como o objetivo é analisar os individuos inadimplentes, as métricas de validação relevantes dizem a aqueles voltados para a validação dos valores classificados como positivo que relamente são positivos, tais métricas são: VPP , Sensibilidade, e a área abaixo da curva ROC (AUC). Portanto, dentre os três critérios avaliados, o algortimo XGBoost apresentou melhor performance em dois: AUC e Sensibilidade. Em contraponto, a Regressão logística teve melhores resultados em apenas um: VPP. Esses métodos são importantes na escolha do modelo pois a acurácia, por mais que apresente valores altos, não é a melhor forma de dizer que um modelo esta classificando corretamente suas previsões.
 
-# Os códgios das etapas estão presentes aqui:
+## Os códgios das etapas estão presentes aqui:
 1. Pacotes necessários: https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/1%20-%20Pacotes%20necess%C3%A1rios
 2. Preparação dos dados: https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/2%20-%20Transformando%20os%20dados
 3. Aplicando a Regressão Logística:https://github.com/GabrielIdalino-AI/INADIMPLENCIA-DE-CARTAO-DE-CREDITO-UMA-COMPARACAO-DE-ACURACIA/blob/main/3%20-%20Aplicando%20a%20Regress%C3%A3o%20log%C3%ADstica
