@@ -1,5 +1,5 @@
 # PREVISÃO DE INADINPLÊNCIA: UMA COMPARAÇÃO ENTRE REGRESSÃO LOGÍSTICA E O ALGORITMO XGBOOST
-O objetivo deste trabalho é comparar o desempenho da acurácia entre a Regressão logística e o algoritmo XGBoost por meio de métricas de validação para modelos de classificação aplicados a previsão de inadimplência. As informações são de clientes que utilizam cartão de crédito de um determinado banco não especificado.
+O objetivo deste trabalho é comparar o desempenho da acurácia entre a Regressão logística e o algoritmo XGBoost por meio de métricas de validação para modelos de classificação aplicados a previsão de inadimplência. Como os dados têm origem de uma pesquisa científica previamente realizada, não há necessidade de uma maior manipulação, pois o não há N/A's e outliers. As informações são de clientes que utilizam cartão de crédito de um determinado banco não especificado.
 O dicionário e a base de dados estão disponíveis em: https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
 
 
