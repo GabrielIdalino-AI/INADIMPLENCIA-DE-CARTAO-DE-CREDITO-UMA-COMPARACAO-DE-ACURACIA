@@ -66,10 +66,9 @@ Os modelos tiveram como resultados das probabilidades as seguintes distribuiçõ
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
 | Acurácia|  0.8174 | 0.8159 |
-| VPN |    0.6463   |   0.6472 |
-| VPP | 0.8428 |    0.8417 |
-| Especificidade | 0.3739 |    0.3847 |
-| Sensibilidade | 0.9412 |    0.9398 |
+| Precisão |    0.6463   |   0.6472 |
+| Especificidade | 0.9412 |    0.9397 |
+| Sensibilidade | 0.3796 |    0.3847 |
 
 
 
@@ -79,10 +78,9 @@ Os modelos tiveram como resultados das probabilidades as seguintes distribuiçõ
 | Métricas  |      Dados Treino      |  Dados Teste |
 |----------|:-------------:|------:|
 | Acurácia|  0.8033 | 0.8128 |
-| VPN |    0.7036   |   0.7239 |
-| VPP | 0.8098 |    0.8198 |
-| Especificidade | 0.1947 |    0.2401 |
-| Sensibilidade | 0.9766 |    0.9742 |
+| Precisão | 0.7036232 |   0.7239 |
+| Especificidade | 0.9766 |    0.9741 |
+| Sensibilidade | 0.1947 |    0.2401 |
 
 
 
